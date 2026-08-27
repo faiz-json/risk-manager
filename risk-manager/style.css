@@ -1,0 +1,224 @@
+/* Liquid Glass UI Core System Setup */
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.06);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-highlight: rgba(255, 255, 255, 0.25);
+    
+    --text-main: #f8fafc;
+    --text-muted: #cbd5e1;
+    --primary-glow: #3b82f6;
+    
+    --risk-low: #10b981;
+    --risk-med: #fbbf24;
+    --risk-high: #f97316;
+    --risk-crit: #ef4444;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background: #090d16;
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Fluid Organic Dynamic Mesh Background Shaders */
+.fluid-blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(90px);
+    z-index: -1;
+    opacity: 0.35;
+    animation: floatingMesh 25s infinite alternate ease-in-out;
+}
+.blob-1 { width: 500px; height: 500px; background: #1e3a8a; top: -10%; left: -10%; animation-duration: 20s; }
+.blob-2 { width: 600px; height: 600px; background: #581c87; bottom: -20%; right: -10%; animation-duration: 28s; }
+.blob-3 { width: 400px; height: 400px; background: #0369a1; top: 40%; left: 50%; animation-duration: 22s; }
+
+@keyframes floatingMesh {
+    0% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+    50% { transform: translate(80px, 50px) scale(1.1) rotate(180deg); }
+    100% { transform: translate(-40px, -80px) scale(0.9) rotate(360deg); }
+}
+
+/* Base Glassmorphic Layout Structure Setup */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+    padding: 1.5rem;
+    gap: 1.5rem;
+}
+
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Sidebar Specific Structural Panels */
+.sidebar-glass {
+    width: 340px;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+}
+
+.sidebar-header h2 { font-size: 1.4rem; font-weight: 700; color: #fff; display: inline-block; }
+.version-tag { font-size: 0.7rem; background: rgba(59, 130, 246, 0.25); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); padding: 2px 8px; border-radius: 20px; margin-left: 8px; vertical-align: middle; }
+
+/* Control Input Forms elements */
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.2rem; }
+.form-group label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 1px; }
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: #60a5fa;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.25);
+    background: rgba(0, 0, 0, 0.35);
+}
+
+/* Premium Liquid Glow Button */
+.btn-submit {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(124, 58, 237, 0.5);
+    filter: brightness(1.1);
+}
+
+/* Dashboard Panels Layout */
+.dashboard-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-y: auto;
+}
+
+.main-header { padding: 1.75rem 2rem; }
+.main-header h1 { font-size: 1.85rem; font-weight: 700; margin-bottom: 0.4rem; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.main-header p { color: var(--text-muted); font-size: 0.95rem; }
+
+.metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.metric-card { padding: 1.5rem; border-radius: 16px; transition: transform 0.3s ease; }
+.metric-card:hover { transform: translateY(-3px); }
+.metric-card h3 { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; }
+.metric-card p { font-size: 2.2rem; font-weight: 800; font-family: monospace; }
+.metric-card.critical p { color: #f87171; text-shadow: 0 0 10px rgba(239, 68, 68, 0.3); }
+.metric-card.success p { color: #34d399; text-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
+
+/* The Liquid Matrix Workspace Structure Layer */
+.visuals-section { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 1.5rem; }
+.matrix-container { padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+.matrix-container h3 { align-self: flex-start; font-size: 1.1rem; font-weight: 600; color: #fff; }
+.risk-matrix { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; background: rgba(0, 0, 0, 0.4); padding: 8px; border-radius: 12px; border: 1px solid var(--glass-border); width: 100%; max-width: 420px; aspect-ratio: 1; }
+
+.matrix-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.85);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+/* Glowing Heat Matrix Sub-States */
+.m-low { background: rgba(16, 185, 129, 0.25); border: 1px solid rgba(16, 185, 129, 0.4); }
+.m-med { background: rgba(251, 191, 36, 0.25); border: 1px solid rgba(251, 191, 36, 0.4); }
+.m-high { background: rgba(249, 115, 22, 0.25); border: 1px solid rgba(249, 115, 22, 0.4); }
+.m-crit { background: rgba(239, 68, 68, 0.3); border: 1px solid rgba(239, 68, 68, 0.5); }
+
+.matrix-cell:hover { transform: scale(1.08); z-index: 2; box-shadow: 0 0 15px rgba(255,255,255,0.2); }
+
+/* Liquid Active Pointer Node state */
+.matrix-cell.active-node {
+    box-shadow: 0 0 25px #fff, inset 0 0 12px rgba(255,255,255,1);
+    border-color: #fff;
+    transform: scale(1.05);
+    animation: activePulse 1.5s infinite alternate ease-in-out;
+}
+@keyframes activePulse {
+    0% { box-shadow: 0 0 15px rgba(255,255,255,0.6); }
+    100% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.9); }
+}
+
+.matrix-axis-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.25rem; }
+
+/* AI Interactive Analytics Card Container */
+.ai-insights-panel { padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+.ai-insights-panel h3 { font-size: 1.1rem; color: #c084fc; text-shadow: 0 0 10px rgba(192, 132, 252, 0.2); }
+.ai-placeholder { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; font-style: italic; display: flex; height: 100%; align-items: center; justify-content: center; text-align: center; padding: 2rem; }
+
+.strategy-box { background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 12px; padding: 1.25rem; animation: panelFade 0.4s ease forwards; }
+@keyframes panelFade { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+.strategy-list { list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.strategy-list li { font-size: 0.9rem; padding: 0.75rem 1rem; background: rgba(255,255,255,0.04); border-left: 3px solid #a855f7; border-radius: 0 8px 8px 0; display: flex; align-items: center; gap: 0.5rem; }
+
+/* Central Analytics Logs Tables Layer Layout */
+.table-container { padding: 1.5rem; }
+.table-container h3 { margin-bottom: 1rem; font-size: 1.1rem; }
+.table-wrapper { width: 100%; overflow-x: auto; border-radius: 12px; background: rgba(0,0,0,0.15); border: 1px solid var(--glass-border); }
+table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
+th, td { padding: 1rem 1.25rem; border-bottom: 1px solid var(--glass-border); }
+th { background: rgba(0,0,0,0.3); color: var(--text-muted); text-transform: uppercase; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.5px; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+/* Custom Badge Pill Layout classes */
+.badge { padding: 0.35rem 0.75rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.bg-low { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+.bg-med { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.bg-high { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+.btn-delete { background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 1.1rem; transition: color 0.2s; padding: 2px; }
+.btn-delete:hover { color: #f87171; transform: scale(1.15); }
+
+/* Scrollbar Customization for Glass feel */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }

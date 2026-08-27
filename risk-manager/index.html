@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Risk Manager - Liquid Glass Edition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated background organic fluid blobs -->
+    <div class="fluid-blob blob-1"></div>
+    <div class="fluid-blob blob-2"></div>
+    <div class="fluid-blob blob-3"></div>
+
+    <div class="app-container">
+        <!-- Sidebar Controls Container (Glassmorphic) -->
+        <aside class="sidebar-glass">
+            <div class="sidebar-header">
+                <h2>🛡️ AI Risk Engine</h2>
+                <span class="version-tag">v2.1 Premium</span>
+            </div>
+            
+            <form id="riskForm">
+                <div class="form-group">
+                    <label for="riskName">Risk Identification Name</label>
+                    <input type="text" id="riskName" placeholder="e.g., Server Infrastructure Failure" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="probability">Probability / Likelihood (1-5)</label>
+                    <div class="select-wrapper">
+                        <select id="probability">
+                            <option value="1">1 - Rare</option>
+                            <option value="2">2 - Unlikely</option>
+                            <option value="3">3 - Possible</option>
+                            <option value="4">4 - Likely</option>
+                            <option value="5">5 - Almost Certain</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="impact">Impact / Severity (1-5)</label>
+                    <div class="select-wrapper">
+                        <select id="impact">
+                            <option value="1">1 - Negligible</option>
+                            <option value="2">2 - Minor</option>
+                            <option value="3">3 - Moderate</option>
+                            <option value="4">4 - Major</option>
+                            <option value="5">5 - Critical</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Risk Domain Category</label>
+                    <div class="select-wrapper">
+                        <select id="category">
+                            <option value="Technical">Technical / Infrastructure</option>
+                            <option value="Financial">Financial / Market</option>
+                            <option value="Operational">Operational / Process</option>
+                            <option value="Legal">Legal & Compliance</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">Analyze & Register Risk</button>
+            </form>
+        </aside>
+
+        <!-- Main Dashboard Workspace -->
+        <main class="dashboard-content">
+            <header class="main-header glass-panel">
+                <h1>Enterprise Risk Matrix & Mitigation System</h1>
+                <p>Real-time algorithmic risk scoring powered by fluid glass analytics dashboard interfaces.</p>
+            </header>
+
+            <!-- Metrics Highlight Bar -->
+            <section class="metrics-grid">
+                <div class="metric-card glass-panel">
+                    <h3>Active Registries</h3>
+                    <p id="totalRisks">0</p>
+                </div>
+                <div class="metric-card glass-panel critical">
+                    <h3>Critical Thresholds</h3>
+                    <p id="criticalRisks">0</p>
+                </div>
+                <div class="metric-card glass-panel success">
+                    <h3>Average Profile Score</h3>
+                    <p id="avgScore">0.0</p>
+                </div>
+            </section>
+
+            <!-- Interactive Core Analytical Panels -->
+            <section class="visuals-section">
+                <div class="matrix-container glass-panel">
+                    <h3>Interactive 5x5 Analytical Grid</h3>
+                    <div class="risk-matrix" id="matrixGrid">
+                        <!-- Matrix blocks dynamically generated via JavaScript -->
+                    </div>
+                    <div class="matrix-axis-label">Consequence / Impact Level →</div>
+                </div>
+
+                <!-- Strategic Mitigation Suggestions Container -->
+                <div class="ai-insights-panel glass-panel">
+                    <h3>🤖 Real-Time AI Mitigation Strategy</h3>
+                    <div id="aiOutput" class="ai-placeholder">
+                        Provide a risk profile setup on the left pane to run real-time mitigation vectors.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Central Data Log Table -->
+            <section class="table-container glass-panel">
+                <h3>Central Risk Register Log</h3>
+                <div class="table-wrapper">
+                    <table id="riskTable">
+                        <thead>
+                            <tr>
+                               <th>ID Target</th>
+                                <th>Category</th>
+                                <th>Likelihood</th>
+                                <th>Impact</th>
+                                <th>Composite Score</th>
+                                <th>Classification</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="riskTableBody">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
